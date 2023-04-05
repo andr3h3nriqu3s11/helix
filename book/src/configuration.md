@@ -312,7 +312,22 @@ min-width = 1
 
 #### `[editor.gutters.diagnostics]` Section
 
-Currently unused
+Options for the diagnostics gutter
+
+| Key            | Description                                     | Default |
+| ---            | ---                                             | ---     |
+| `error-icon`   | The icon for an error message on the  gutter    | `"●"`   |
+| `warning-icon` | The icon for an error message on the  gutter    | `"●"`   |    
+| `info-icon`    | The icon for an error message on the  gutter    | `"●"`   |    
+| `hint-icon`    | The icon for an error message on the  gutter    | `"●"`   |
+
+```toml
+[editor.gutters.diagnostics]
+error-icon = "☢️"
+warning-icon = "⚠️"
+info-icon = "ℹ️"
+hint-icon = "❤️"
+```
 
 #### `[editor.gutters.diff]` Section
 

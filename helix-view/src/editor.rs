@@ -81,6 +81,8 @@ pub struct GutterConfig {
     pub layout: Vec<GutterType>,
     /// Options specific to the "line-numbers" gutter
     pub line_numbers: GutterLineNumbersConfig,
+    // Options specifig to the "diagnostics" gutter
+    pub diagnostics: GutterDiagnosticsConfig,
 }
 
 impl Default for GutterConfig {
@@ -94,6 +96,7 @@ impl Default for GutterConfig {
                 GutterType::Diff,
             ],
             line_numbers: GutterLineNumbersConfig::default(),
+            diagnostics: GutterDiagnosticsConfig::default(),
         }
     }
 }
@@ -161,6 +164,27 @@ pub struct GutterLineNumbersConfig {
 impl Default for GutterLineNumbersConfig {
     fn default() -> Self {
         Self { min_width: 3 }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case", default, deny_unknown_fields)]
+pub struct GutterDiagnosticsConfig {
+    /// Minimum number of characters to use for line number gutter. Defaults to 3.
+    pub error_icon: String,
+    pub warning_icon: String,
+    pub info_icon: String,
+    pub hint_icon: String,
+}
+
+impl Default for GutterDiagnosticsConfig {
+    fn default() -> Self {
+        Self {
+            error_icon: String::from("●"),
+            warning_icon: String::from("●"),
+            info_icon: String::from("●"),
+            hint_icon: String::from("●"),
+        }
     }
 }
 
